@@ -6,8 +6,10 @@ Checksums with Drunken Bishop text output. Largely modeled after [The drunken bi
 
 
 ```shell
-$ go build .
-$ ./drunksum -a md5 < drunksum
+go build .
+./drunksum -a md5 < drunksum
+```
+```
 _                   _
 
 
