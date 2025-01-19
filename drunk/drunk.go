@@ -46,14 +46,22 @@ func NewBishop(width, height int, data []byte) (Bishop, error) {
 	lenData := len(data)
 	for i := 0; i < lenData; i++ {
 		v := data[i]
-		v0 := 0x3 & v
-		v1 := (0xC & v) >> 2
+		v0 := 0x03 & v
+		v1 := (0x0c & v) >> 2
+		v2 := (0x30 & v) >> 4
+		v3 := (0xc0 & v) >> 6
 
 		offset := Offset(x, width, height, v0)
 		x += offset
 		grid[x]++
 
 		offset = Offset(x, width, height, v1)
+		grid[x]++
+
+		offset = Offset(x, width, height, v2)
+		grid[x]++
+
+		offset = Offset(x, width, height, v3)
 		grid[x]++
 	}
 	grid[start] = 15
