@@ -26,6 +26,7 @@ func NewChecksum(algorithm string, r *bufio.Reader) ([]byte, error) {
 	case "md5":
 		h = md5.New()
 	default:
+		return nil, fmt.Errorf("invalid algorithm: %s", algorithm)
 	}
 
 	if _, err := io.Copy(h, r); err != nil {
